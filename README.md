@@ -68,5 +68,7 @@ Sa vada numarul pacientilor pe care ii are intr-o zi sau intr-o saptamana
 Sa poata anula o zi intreaga cu un singur mesaj de grup pentru pacientii din acea zi
 
 **Pacient:**
- - sa isi poata alege un doctor in functie de locatie sau chiar in functie de patologia pe care o are
+ - sa isi poata alege un doctor in functie de locatie sau chiar in functie de patologia pe care o are 
+ - istoric ale programarilor
     
+pip install -r requirements.txt in bash pentru instalarea tuturor modulelor
