@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Programările Tale</h2>
+        <h4>Dr. {{ current_user.username }}</h4>
+    </div>
+
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Pacient</th>
+                <th>Data</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ appointment.patient.username }}</td>
+                <td>{{ appointment.date.strftime('%Y-%m-%d %H:%M') }}</td>
+                <td>{{ appointment.status }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">Nu ai programări active.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+Flask==3.1.0                    #   Framework-ul principal pentru crearea aplicației web
+Flask-SQLAlchemy==3.1.1         #	Gestionarea bazei de date cu SQLAlchemy
+Flask-Migrate==4.1.0            #   Permite gestionarea migrațiilor bazei de date cu Alembic
+Flask-Login==0.6.3              #   Gestionarea autentificării utilizatorilor
+Flask-WTF==1.2.2                #   Utilizat pentru validarea formularelor cu Flask
+WTForms==3.2.1                  #   Biblioteca care oferă validări pentru formulare
+Werkzeug==3.1.3                 #   Unelte pentru securizarea parolelor și gestionarea sesiunilor
+email-validator==2.0.0          #   Folosit pentru validarea câmpurilor de email în formulare

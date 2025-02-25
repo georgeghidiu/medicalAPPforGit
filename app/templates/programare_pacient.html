@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Programează-te la consultație</h2>
+    <p class="text-center">Alege data, ora și doctorul pentru programare.</p>
+
+    <form method="POST" class="mt-4">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            <label class="form-label">Alege o dată:</label>
+            {{ form.date(class="form-control") }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Alege o oră:</label>
+            {{ form.time(class="form-control") }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Selectează doctorul:</label>
+            {{ form.doctor(class="form-control") }}
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Confirmă Programarea</button>
+    </form>
+</div>
+{% endblock %}

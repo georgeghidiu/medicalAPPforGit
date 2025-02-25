@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="header d-flex justify-content-between align-items-center">
+        <h2>👨‍⚕️ Dashboard Doctor</h2>
+        <a href="{{ url_for('main.logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+
+    <div class="dashboard-card mt-4">
+        <h4 class="text-center">📅 Programările tale</h4>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Pacient</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th>Acțiuni</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ appointment.patient.username }}</td>
+                    <td>{{ appointment.date.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>{{ appointment.status }}</td>
+                    <td>
+                        {% if appointment.status != "canceled" %}
+                        <form method="POST" action="{{ url_for('main.cancel_appointment', appointment_id=appointment.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Sigur doriți să anulați această programare?')">
+                                ❌ Anulează
+                            </button>
+                        </form>
+                        {% else %}
+                        <span class="text-muted">Anulată</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Nu ai programări.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="{{ url_for('main.programari_doctor') }}" class="btn btn-primary">🔍 Vezi Programările</a>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
+        color: white;
+    }
+
+    .dashboard-card {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    .table {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+    }
+
+    .table th {
+        background-color: rgba(255, 255, 255, 0.3);
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+</style>
+{% endblock %}
